@@ -1,0 +1,16 @@
+# action.yml
+name: 'Increment Semver'
+description: 'Get the next version of a github repository'
+inputs:
+  version-level:  # id of input
+    description: 'Version Level to update [-Mmp]'
+    required: true
+    default: '-p'
+outputs:
+  version: # id of output
+    description: 'The incremented version'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.version-level }}

@@ -1,0 +1,21 @@
+on: [push]
+
+jobs:
+  test-increment-semver-job:
+    runs-on: ubuntu-latest
+    name: A job to test incrementing the version of a repository
+    steps:
+
+#      Note Checkout is required for ${GITHUB_WORKSPACE} to be not empty
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Increment Step
+        id: increment-semver
+        uses: Benbentwo/increment-semver@master
+        with:
+          version-level: '-p'
+
+      # Use the output from the `hello` step
+      - name: Get the output version
+        run: echo "The new version was ${{ steps.increment-semver.outputs.version }}"

@@ -15,8 +15,19 @@ done
 
 shift $(($OPTIND - 1))
 
-version=$1
+#version=$1
+echo "cd to github workspace"
+cd ${GITHUB_WORKSPACE}
+git for-each-ref refs/tags/ --count=1 --sort=-version:refname --format='%(refname:short)'
 
+version=$(git for-each-ref refs/tags/ --count=1 --sort=-version:refname --format='%(refname:short)')
+echo "Version: ${version}"
+
+if [ -z ${version} ]
+then
+    echo "Couldn't determine version"
+    exit 1
+fi
 # Build array from version string.
 
 a=( ${version//./ } )
@@ -50,4 +61,8 @@ then
 fi
 
 echo "${a[0]}.${a[1]}.${a[2]}"
+version=$(echo "${a[0]}.${a[1]}.${a[2]}")
+
+echo "::set-output name=version::${version}"
+
 
