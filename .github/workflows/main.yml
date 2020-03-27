@@ -10,12 +10,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Increment Step
-        id: increment-semver
+
+#     Examples
+      - name: Increment Step Patch
+        id: increment-semver-p
         uses: Benbentwo/increment-semver@master
         with:
           version-level: '-p'
 
-      # Use the output from the `hello` step
+      - name: Increment Step Minor
+        id: increment-semver-m
+        uses: Benbentwo/increment-semver@master
+        with:
+          version-level: '-m'
+
+      - name: Increment Step Major
+        id: increment-semver-M
+        uses: Benbentwo/increment-semver@master
+        with:
+          version-level: '-M'
+
+      # Use the output from the `Increment Step X` step
       - name: Get the output version
-        run: echo "The new version was ${{ steps.increment-semver.outputs.version }}"
+        run: |
+          echo "The new patch version was ${{ steps.increment-semver-p.outputs.version }}"
+          echo "The new minor version was ${{ steps.increment-semver-m.outputs.version }}"
+          echo "The new Major version was ${{ steps.increment-semver-M.outputs.version }}"
