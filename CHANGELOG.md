@@ -1,1 +1,1 @@
-Syntax states icon & color go under branding.
+Adding author to [Action.yaml](action.yml)

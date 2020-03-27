@@ -4,6 +4,7 @@ description: 'Get the next version of a github repository'
 branding:
   icon: 'git-commit'
   color: 'gray-dark'
+author: Benbentwo
 inputs:
   version-level:  # id of input
     description: 'Version Level to update [-Mmp]'
