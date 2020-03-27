@@ -13,19 +13,19 @@ jobs:
 
 #     Examples
       - name: Increment Step Patch
-        id: increment-semver-p
+        id: increment-semver-patch
         uses: Benbentwo/increment-semver@master
         with:
           version-level: '-p'
 
       - name: Increment Step Minor
-        id: increment-semver-m
+        id: increment-semver-minor
         uses: Benbentwo/increment-semver@master
         with:
           version-level: '-m'
 
       - name: Increment Step Major
-        id: increment-semver-M
+        id: increment-semver-major
         uses: Benbentwo/increment-semver@master
         with:
           version-level: '-M'
@@ -33,6 +33,6 @@ jobs:
       # Use the output from the `Increment Step X` step
       - name: Get the output version
         run: |
-          echo "The new patch version was ${{ steps.increment-semver-p.outputs.version }}"
-          echo "The new minor version was ${{ steps.increment-semver-m.outputs.version }}"
-          echo "The new Major version was ${{ steps.increment-semver-M.outputs.version }}"
+          echo "The new patch version was ${{ steps.increment-semver-patch.outputs.version }}"
+          echo "The new minor version was ${{ steps.increment-semver-minor.outputs.version }}"
+          echo "The new Major version was ${{ steps.increment-semver-major.outputs.version }}"
