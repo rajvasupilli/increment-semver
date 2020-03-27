@@ -1,38 +1,37 @@
-on: [push]
-
+on:
+  push:
+    branchs: master
 jobs:
   test-increment-semver-job:
     runs-on: ubuntu-latest
-    name: A job to test incrementing the version of a repository
+    name: A job to release the next version
     steps:
-
 #      Note Checkout is required for ${GITHUB_WORKSPACE} to be not empty
       - name: Checkout
         uses: actions/checkout@v1
 
-
-#     Examples
       - name: Increment Step Patch
         id: increment-semver-patch
         uses: Benbentwo/increment-semver@master
         with:
           version-level: '-p'
 
-      - name: Increment Step Minor
-        id: increment-semver-minor
-        uses: Benbentwo/increment-semver@master
-        with:
-          version-level: '-m'
-
-      - name: Increment Step Major
-        id: increment-semver-major
-        uses: Benbentwo/increment-semver@master
-        with:
-          version-level: '-M'
-
-      # Use the output from the `Increment Step X` step
-      - name: Get the output version
+#      Optional I'm using this to get a less static changelog for the body of the release
+      - name: Get Changelog
+        id: changelog
         run: |
-          echo "The new patch version was ${{ steps.increment-semver-patch.outputs.version }}"
-          echo "The new minor version was ${{ steps.increment-semver-minor.outputs.version }}"
-          echo "The new Major version was ${{ steps.increment-semver-major.outputs.version }}"
+          echo "::set-output name=CHANGELOG::$(cat CHANGELOG.md)"
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ steps.increment-semver-patch.outputs.version }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            #### Changes in this Release:
+            ${{ steps.changelog.outputs.CHANGELOG }}
+          draft: false
+          prerelease: false

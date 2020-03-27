@@ -1,0 +1,1 @@
+Making workflow to make a release after incrementing
