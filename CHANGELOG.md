@@ -1,1 +1,1 @@
-Adding Icon and Color to action.yml
+Syntax states icon & color go under branding.
