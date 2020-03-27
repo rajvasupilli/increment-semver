@@ -41,6 +41,9 @@ Example:
               echo "The new minor version was ${{ steps.increment-semver-minor.outputs.version }}"
               echo "The new Major version was ${{ steps.increment-semver-major.outputs.version }}"
 
+Output:
+![Output from above example](docs/assets/output.png)
+
 Shell Script: increment-semver
 ===========
 
