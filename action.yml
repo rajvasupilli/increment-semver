@@ -1,6 +1,8 @@
 # action.yml
 name: 'Increment Semver'
 description: 'Get the next version of a github repository'
+icon: 'git-commit'
+color: 'grey'
 inputs:
   version-level:  # id of input
     description: 'Version Level to update [-Mmp]'

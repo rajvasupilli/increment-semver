@@ -1,1 +1,1 @@
-Making workflow to make a release after incrementing
+Adding Icon and Color to action.yml
