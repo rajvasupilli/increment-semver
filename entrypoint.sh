@@ -72,7 +72,7 @@ fi
 
 echo "${a[0]}.${a[1]}.${a[2]}"
 version=$(echo "${a[0]}.${a[1]}.${a[2]}")
-
+just_numbers=$(echo "${major_version}.${a[1]}.${a[2]}")
 echo "::set-output name=version::${version}"
-echo "::set-output name=stripped-version::${version}"
+echo "::set-output name=stripped-version::${just_numbers}"
 
