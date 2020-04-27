@@ -44,7 +44,17 @@ fi
 
 if [ ! -z $major ]
 then
-  ((a[0]++))
+# Check for v in version (e.g. v1.0 not just 1.0)
+  if [[ ${major} =~ ([vV]?)([0-9]+) ]]
+  then 
+    v="${BASH_REMATCH[1]}"
+    major_version=${BASH_REMATCH[2]}
+    ((major_version++))
+    a[0]=${v}${major_version}
+  else 
+    ((a[0]++))
+  fi
+  
   a[1]=0
   a[2]=0
 fi
@@ -64,5 +74,5 @@ echo "${a[0]}.${a[1]}.${a[2]}"
 version=$(echo "${a[0]}.${a[1]}.${a[2]}")
 
 echo "::set-output name=version::${version}"
-
+echo "::set-output name=stripped-version::${version}"
 
