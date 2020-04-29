@@ -52,7 +52,8 @@ then
     ((major_version++))
     a[0]=${v}${major_version}
   else 
-    major_version=((a[0]++))
+    ((a[0]++))
+    major_version=a[0]
   fi
   
   a[1]=0
