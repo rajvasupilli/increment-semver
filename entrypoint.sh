@@ -31,7 +31,7 @@ fi
 # Build array from version string.
 
 a=( ${version//./ } )
-
+major_version=0
 # If version string is missing or has the wrong number of members, show usage message.
 
 if [ ${#a[@]} -ne 3 ]
@@ -52,7 +52,7 @@ then
     ((major_version++))
     a[0]=${v}${major_version}
   else 
-    ((a[0]++))
+    major_version=((a[0]++))
   fi
   
   a[1]=0
