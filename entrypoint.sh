@@ -45,7 +45,7 @@ fi
 if [ ! -z $major ]
 then
 # Check for v in version (e.g. v1.0 not just 1.0)
-  if [[ ${major} =~ ([vV]?)([0-9]+) ]]
+  if [[ ${a[0]} =~ ([vV]?)([0-9]+) ]]
   then 
     v="${BASH_REMATCH[1]}"
     major_version=${BASH_REMATCH[2]}
