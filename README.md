@@ -65,3 +65,7 @@ $ ./increment_version.sh -M 1.1.15
 $ ./increment_version.sh -Mmp 2.3.4
 3.1.1
 ```
+
+## TODO
+
+Ideally this could be done as JS or something, its kind of annoying having every action build this docker image every run. granted theres sometimes caching but the run time of building this docker image could add up on private repos where actions aren't free. ideally it just runs with no build since thats all its doing
