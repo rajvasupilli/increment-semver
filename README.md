@@ -68,4 +68,5 @@ $ ./increment_version.sh -Mmp 2.3.4
 
 ## TODO
 
-Ideally this could be done as JS or something, its kind of annoying having every action build this docker image every run. granted theres sometimes caching but the run time of building this docker image could add up on private repos where actions aren't free. ideally it just runs with no build since thats all its doing
+ - Ideally this could be done as JS or something, its kind of annoying having every action build this docker image every run. granted theres sometimes caching but the run time of building this docker image could add up on private repos where actions aren't free. ideally it just runs with no build since thats all its doing
+ - Add Docs for common use cases, should be clear (like a new release) since I already do it elsewhere
