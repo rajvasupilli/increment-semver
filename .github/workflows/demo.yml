@@ -1,5 +1,6 @@
 on: [push]
 
+
 jobs:
   test-increment-semver-job:
     runs-on: ubuntu-latest
